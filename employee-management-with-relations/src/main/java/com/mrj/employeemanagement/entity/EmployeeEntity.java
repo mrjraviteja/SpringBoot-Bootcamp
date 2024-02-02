@@ -2,6 +2,8 @@ package com.mrj.employeemanagement.entity;
 
 import java.sql.Date;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -34,21 +36,23 @@ public class EmployeeEntity {
 	
 	@OneToOne
 	@JoinColumn(name="dept_id")
+	@JsonIgnore
 	private DepartmentEntity departmentEntity;
-	
 	
 	public EmployeeEntity()
 	{
 		
 	}
 
-	public EmployeeEntity(long id, String name, String gender, Date dateOfBirth, String address) {
+	public EmployeeEntity(long id, String name, String gender, Date dateOfBirth, String address,
+			DepartmentEntity departmentEntity) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.gender = gender;
 		this.dateOfBirth = dateOfBirth;
 		this.address = address;
+		this.departmentEntity = departmentEntity;
 	}
 
 	public long getId() {
@@ -89,6 +93,14 @@ public class EmployeeEntity {
 
 	public void setAddress(String address) {
 		this.address = address;
+	}
+
+	public DepartmentEntity getDepartmentEntity() {
+		return departmentEntity;
+	}
+
+	public void setDepartmentEntity(DepartmentEntity departmentEntity) {
+		this.departmentEntity = departmentEntity;
 	}
 	
 }

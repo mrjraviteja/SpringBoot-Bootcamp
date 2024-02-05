@@ -34,6 +34,8 @@ public class LocationServiceImpl implements LocationService{
         responseDTO.setState(locationEntity.getState());
         responseDTO.setCountry(locationEntity.getCountry());
         responseDTO.setPin(locationEntity.getPin());
+        responseDTO.setCreatedDate(locationEntity.getCreatedDate());
+        responseDTO.setLastModifiedDate(locationEntity.getLastModifiedDate());
         
         return responseDTO;
 	}

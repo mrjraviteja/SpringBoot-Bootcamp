@@ -1,5 +1,9 @@
 package com.mrj.employeemanagement.controller.dto;
 
+import java.time.LocalDateTime;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class LocationResponseDTO {
 
 	private long locId;
@@ -7,6 +11,12 @@ public class LocationResponseDTO {
     private String state;
     private String country;
     private int pin;
+    
+    @JsonFormat(pattern = "MM/dd/yyyy HH:mm")
+    private LocalDateTime createdDate;
+    
+    @JsonFormat(pattern = "MM/dd/yyyy HH:mm")
+    private LocalDateTime lastModifiedDate;
     
 	public long getLocId() {
 		return locId;
@@ -37,6 +47,18 @@ public class LocationResponseDTO {
 	}
 	public void setPin(int pin) {
 		this.pin = pin;
+	}
+	public LocalDateTime getCreatedDate() {
+		return createdDate;
+	}
+	public void setCreatedDate(LocalDateTime createdDate) {
+		this.createdDate = createdDate;
+	}
+	public LocalDateTime getLastModifiedDate() {
+		return lastModifiedDate;
+	}
+	public void setLastModifiedDate(LocalDateTime lastModifiedDate) {
+		this.lastModifiedDate = lastModifiedDate;
 	}
     
 }

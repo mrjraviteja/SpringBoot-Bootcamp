@@ -1,11 +1,19 @@
 package com.mrj.employeemanagement.entity;
 
 import java.sql.Date;
+import java.time.LocalDateTime;
 
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EntityListeners;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -14,6 +22,7 @@ import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity(name="employee")
+@EntityListeners(AuditingEntityListener.class)
 @Table(name="mt_employee")
 public class EmployeeEntity {
 	
@@ -33,6 +42,16 @@ public class EmployeeEntity {
 	
 	@Column(name="address")
 	private String address;
+	
+	@JsonFormat(pattern="MM/dd/yyyy HH:mm")
+	@DateTimeFormat(pattern = "MM/dd/yyyy HH:mm")
+	@CreatedDate
+	private LocalDateTime createdDate;
+	
+	@JsonFormat(pattern="MM/dd/yyyy HH:mm")
+	@DateTimeFormat(pattern = "MM/dd/yyyy HH:mm")
+	@LastModifiedDate
+	private LocalDateTime lastModifiedDate;
 	
 	@OneToOne
 	@JoinColumn(name="dept_id")
@@ -101,6 +120,14 @@ public class EmployeeEntity {
 
 	public void setDepartmentEntity(DepartmentEntity departmentEntity) {
 		this.departmentEntity = departmentEntity;
+	}
+
+	public LocalDateTime getCreatedDate() {
+		return createdDate;
+	}
+
+	public LocalDateTime getLastModifiedDate() {
+		return lastModifiedDate;
 	}
 	
 }

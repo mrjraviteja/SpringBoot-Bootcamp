@@ -38,6 +38,8 @@ public class DepartmentServiceImpl implements DepartmentService{
 		DepartmentResponseDTO responseDTO = new DepartmentResponseDTO();
 		responseDTO.setDeptId(departmentEntity.getDeptId());
 		responseDTO.setDeptName(departmentEntity.getDeptName());
+		responseDTO.setCreatedDate(departmentEntity.getCreatedDate());
+		responseDTO.setLastModifiedDate(departmentEntity.getLastModifiedDate());
 		
 		if(!(departmentEntity.getLocations().isEmpty()))
 		{

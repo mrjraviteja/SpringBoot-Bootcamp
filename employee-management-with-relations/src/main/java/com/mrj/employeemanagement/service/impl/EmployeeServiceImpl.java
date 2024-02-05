@@ -36,6 +36,8 @@ public class EmployeeServiceImpl implements EmployeeService{
         responseDTO.setGender(employeeEntity.getGender());
         responseDTO.setDateOfBirth(employeeEntity.getDateOfBirth());
         responseDTO.setAddress(employeeEntity.getAddress());
+        responseDTO.setCreatedDate(employeeEntity.getCreatedDate());
+        responseDTO.setLastModifiedDate(employeeEntity.getLastModifiedDate());
         
         if(employeeEntity.getDepartmentEntity() != null)
         {
